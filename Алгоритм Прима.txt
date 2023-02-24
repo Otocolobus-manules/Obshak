@@ -1,0 +1,40 @@
+file = open("C:/Users/USovi/Desktop/file.txt", 'r')
+Summ = 0
+List_Name = file.readline().split()
+List_matrix = []
+List_index = [0]
+List_Nindex = []
+List_len = []
+while True:
+    line = file.readline()
+    if not line:
+        break
+    List_matrix.append(list(map(int, line.split())))
+file.close
+
+Max = 0
+for i in List_matrix:
+    for j in i:
+        if j > Max:
+            Max = j
+
+Nindex = 0
+index_list = 0
+while len(List_index) < len(List_matrix):
+    Max_len = Max
+    for i in List_index:
+        index = 0
+        for j in List_matrix[i]:
+            if j != 0 and j <= Max_len and index not in List_index:
+                Nindex = i
+                Max_len = j
+                index_list = index
+            index += 1
+    Summ += Max_len
+    List_len.append(Max_len)
+    List_Nindex.append(Nindex)
+    List_index.append(index_list)
+print(f"Минимальный путь: {Summ}")
+print("Пути: ", end="")
+for i in range(len(List_Nindex)):
+    print(f"{List_Name[List_Nindex[i]]} - {List_Name[List_index[i + 1]]} ({List_len[i]}); ", end="")

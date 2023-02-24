@@ -1,0 +1,31 @@
+file = open("C:/Users/USovi/Desktop/input_s1_09.txt", "r")
+List = file.readline().split()
+file.close()
+
+first = len(List) // 2
+line = List[first]
+if len(List) % 2 != 0:
+    for i in range(1, first + 1):
+        line += f" {List[first - i]}"
+        line += f" {List[first + i]}"
+else:
+    for i in range(1, first):
+        line += f" {List[first - i]}"
+        line += f" {List[first + i]}"
+    line += f" {List[0]}"
+
+New_Line = ""
+for i in line.split():
+    first = len(i) // 2
+    slovo = i[first]
+    if len(i) % 2 != 0:
+        for j in range(1, first + 1):
+            slovo += i[first - j]
+            slovo += i[first + j]
+    else:
+        for j in range(1, first):
+            slovo += i[first - j]
+            slovo += i[first + j]
+        slovo += i[0]
+    New_Line += f"{slovo} "
+print(New_Line)

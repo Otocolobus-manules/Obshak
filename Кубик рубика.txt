@@ -1,0 +1,17 @@
+file = open("C:/Users/USovi/Desktop/input_s1_15.txt", "r")
+N, M = map(int, file.readline().split())
+XN, YN, ZN = map(int, file.readline().split())
+while True:
+    line = file.readline()
+    if not line:
+        break
+    A, K, S = line.split()
+    K, S = int(K), int(S)
+    if A == "X" and XN == K:
+        YN, ZN = ZN, N + 1 - YN
+    elif A == "Y" and YN == K:
+        XN, ZN = ZN, N + 1 - XN
+    elif A == "Z" and ZN == K:
+        YN, XN = XN, N + 1 - YN
+file.close
+print(XN, YN, ZN)
